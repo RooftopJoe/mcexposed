@@ -34,4 +34,5 @@ public class ConfigManager {
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
+	public boolean isShowMiningSpeed() { return config.tooltip.showMiningSpeed; }
 }
