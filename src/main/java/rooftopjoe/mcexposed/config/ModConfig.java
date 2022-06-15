@@ -25,4 +25,12 @@ import me.shedaniel.autoconfig.ConfigData;
 
 @Config(name = "mcexposed")
 public class ModConfig extends PartitioningSerializer.GlobalData {
+	@ConfigEntry.Category("tooltip")
+	@ConfigEntry.Gui.TransitiveObject
+	TooltipConfig tooltip = new TooltipConfig();
+}
+
+@Config(name = "tooltip")
+class TooltipConfig implements ConfigData {
+	@ConfigEntry.Gui.Tooltip boolean showMaxEnchantmentLevel = true;
 }

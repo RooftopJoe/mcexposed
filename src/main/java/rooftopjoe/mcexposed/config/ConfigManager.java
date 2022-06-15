@@ -29,4 +29,6 @@ public class ConfigManager {
 		AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
 		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 	}
+
+	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 }

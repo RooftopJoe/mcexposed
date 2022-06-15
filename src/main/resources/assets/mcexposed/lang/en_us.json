@@ -1,0 +1,6 @@
+{
+	"text.autoconfig.mcexposed.title": "MC Exposed Options",
+	"text.autoconfig.mcexposed.category.tooltip": "Tooltips",
+	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel": "Show maximum enchantment level",
+	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel.@Tooltip": "Append the maximum to enchantment levels."
+}
