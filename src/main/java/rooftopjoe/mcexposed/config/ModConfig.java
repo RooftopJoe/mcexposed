@@ -25,9 +25,19 @@ import me.shedaniel.autoconfig.ConfigData;
 
 @Config(name = "mcexposed")
 public class ModConfig extends PartitioningSerializer.GlobalData {
+	@ConfigEntry.Category("hud")
+	@ConfigEntry.Gui.TransitiveObject
+	HudConfig hud = new HudConfig();
+
 	@ConfigEntry.Category("tooltip")
 	@ConfigEntry.Gui.TransitiveObject
 	TooltipConfig tooltip = new TooltipConfig();
+}
+
+@Config(name = "hud")
+class HudConfig implements ConfigData {
+	@ConfigEntry.Gui.Tooltip boolean showStatusEffectAmplifier = true;
+	@ConfigEntry.Gui.Tooltip boolean showStatusEffectDuration = true;
 }
 
 @Config(name = "tooltip")

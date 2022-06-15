@@ -1,5 +1,12 @@
 {
 	"text.autoconfig.mcexposed.title": "MC Exposed Options",
+
+	"text.autoconfig.mcexposed.category.hud": "HUD",
+	"text.autoconfig.mcexposed.option.hud.showStatusEffectAmplifier": "Show status effect amplifier",
+	"text.autoconfig.mcexposed.option.hud.showStatusEffectAmplifier.@Tooltip": "Show the amplifier on top of status effect icons.",
+	"text.autoconfig.mcexposed.option.hud.showStatusEffectDuration": "Show status effect duration",
+	"text.autoconfig.mcexposed.option.hud.showStatusEffectDuration.@Tooltip": "Show the duration on top of status effect icons.",
+
 	"text.autoconfig.mcexposed.category.tooltip": "Tooltips",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel": "Show maximum enchantment level",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel.@Tooltip": "Append the maximum to enchantment levels."

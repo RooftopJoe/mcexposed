@@ -30,5 +30,8 @@ public class ConfigManager {
 		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 	}
 
+	public boolean isShowStatusEffectAmplifier() { return config.hud.showStatusEffectAmplifier; }
+	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
+
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 }
