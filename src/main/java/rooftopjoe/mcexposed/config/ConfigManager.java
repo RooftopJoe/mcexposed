@@ -34,9 +34,10 @@ public class ConfigManager {
 	public boolean isShowStatusEffectAmplifier() { return config.hud.showStatusEffectAmplifier; }
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 
+	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 	public boolean isShowCompostingChance() { return config.tooltip.showCompostingChance; }
 	public boolean isShowBlockHardness() { return config.tooltip.showBlockHardness; }
-	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
+	public boolean isShowLuminance() { return config.tooltip.showLuminance; }
 	public boolean isShowMiningSpeed() { return config.tooltip.showMiningSpeed; }
 	public boolean isShowFoodStats() { return config.tooltip.showFoodStats; }
 }

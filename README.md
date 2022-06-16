@@ -31,9 +31,10 @@ More features are expected to come but here is a complete list of the ones imple
 
 ### Tooltips
 
+- Maximum enchantment level
 - Composting chance
 - Block hardness
-- Maximum enchantment level
+- Luminance
 - Mining speed
 - Food statistics
 

@@ -36,10 +36,11 @@ import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.text.Text;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.Formatting;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.util.Formatting;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
@@ -74,6 +75,13 @@ public abstract class ItemStackMixin {
 		oneDecimal.setMinimumFractionDigits(0);
 		oneDecimal.setMaximumFractionDigits(1);
 		oneDecimal.setRoundingMode(RoundingMode.HALF_UP);
+
+		if (Main.configManager.isShowLuminance()) {
+			final int luminance = Registry.BLOCK.get(Registry.ITEM.getKey(item).get().getValue()).getDefaultState().getLuminance();
+
+			if (luminance > 0)
+				list.add(topLine, Text.translatable("tooltip.mcexposed.luminance").append(": " + String.valueOf(luminance)).formatted(Formatting.GRAY));
+		}
 
 		if (Main.configManager.isShowBlockHardness() && item instanceof BlockItem) {
 			list.add(topLine, Text.translatable("tooltip.mcexposed.hardness")
