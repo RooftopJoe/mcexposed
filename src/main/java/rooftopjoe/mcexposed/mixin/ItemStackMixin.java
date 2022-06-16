@@ -35,6 +35,7 @@ import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.text.Text;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.util.Formatting;
@@ -77,9 +78,18 @@ public abstract class ItemStackMixin {
 				.append(": " + oneDecimal.format(((BlockItem)item).getBlock().getHardness()))
 				.formatted(Formatting.GRAY));
 
+		if (Main.configManager.isShowCompostingChance()) {
+			final float chance = ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item);
+			
+			if (chance > 0)
+				list.add(topLine, Text.translatable("tooltip.mcexposed.compostingchance")
+					.append(": " + oneDecimal.format(100 * chance) + "%")
+					.formatted(Formatting.GRAY));
+		}
+
 		if (Main.configManager.isShowMiningSpeed() && item instanceof ToolItem) {
-			float multiplier = ((ToolItem)item).getMaterial().getMiningSpeedMultiplier();
-			int level = EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, (ItemStack)(Object)this);
+			final float multiplier = ((ToolItem)item).getMaterial().getMiningSpeedMultiplier();
+			final int level = EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, (ItemStack)(Object)this);
 			double speed = multiplier + Math.pow(level, 2) + (level > 0 ? 1 : 0);
 
 			if (StatusEffectUtil.hasHaste(player))
