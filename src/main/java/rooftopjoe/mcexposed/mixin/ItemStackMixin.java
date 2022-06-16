@@ -79,14 +79,18 @@ public abstract class ItemStackMixin {
 		if (Main.configManager.isShowLuminance()) {
 			final int luminance = Registry.BLOCK.get(Registry.ITEM.getKey(item).get().getValue()).getDefaultState().getLuminance();
 
-			if (luminance > 0)
-				list.add(topLine, Text.translatable("tooltip.mcexposed.luminance").append(": " + String.valueOf(luminance)).formatted(Formatting.GRAY));
+			if (luminance > 0) {
+				list.add(topLine, Text.translatable("tooltip.mcexposed.luminance")
+				                      .append(": " + String.valueOf(luminance))
+				                      .formatted(Formatting.GRAY));
+				botLine++;
+			}
 		}
 
 		if (Main.configManager.isShowBlockHardness() && item instanceof BlockItem) {
 			list.add(topLine, Text.translatable("tooltip.mcexposed.hardness")
-				.append(": " + oneDecimal.format(((BlockItem)item).getBlock().getHardness()))
-				.formatted(Formatting.GRAY));
+			                      .append(": " + oneDecimal.format(((BlockItem)item).getBlock().getHardness()))
+			                      .formatted(Formatting.GRAY));
 			botLine++;
 		}
 
@@ -95,10 +99,17 @@ public abstract class ItemStackMixin {
 			
 			if (chance > 0) {
 				list.add(topLine, Text.translatable("tooltip.mcexposed.compostingchance")
-					.append(": " + oneDecimal.format(100 * chance) + "%")
-					.formatted(Formatting.GRAY));
+				                      .append(": " + oneDecimal.format(100 * chance) + "%")
+				                      .formatted(Formatting.GRAY));
 				botLine++;
 			}
+		}
+
+		if (Main.configManager.isShowBlastResistance() && item instanceof BlockItem) {
+			list.add(topLine, Text.translatable("tooltip.mcexposed.blastresistance")
+			                      .append(": " + oneDecimal.format(((BlockItem)item).getBlock().getBlastResistance()))
+			                      .formatted(Formatting.GRAY));
+			botLine++;
 		}
 
 		if (Main.configManager.isShowMiningSpeed() && item instanceof ToolItem) {

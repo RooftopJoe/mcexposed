@@ -32,6 +32,7 @@ More features are expected to come but here is a complete list of the ones imple
 ### Tooltips
 
 - Maximum enchantment level
+- Blast resistance
 - Composting chance
 - Block hardness
 - Luminance

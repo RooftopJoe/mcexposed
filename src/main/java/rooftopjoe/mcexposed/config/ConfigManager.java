@@ -35,6 +35,7 @@ public class ConfigManager {
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
+	public boolean isShowBlastResistance() { return config.tooltip.showBlastResistance; }
 	public boolean isShowCompostingChance() { return config.tooltip.showCompostingChance; }
 	public boolean isShowBlockHardness() { return config.tooltip.showBlockHardness; }
 	public boolean isShowLuminance() { return config.tooltip.showLuminance; }

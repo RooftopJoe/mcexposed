@@ -44,6 +44,7 @@ class HudConfig implements ConfigData {
 @Config(name = "tooltip")
 class TooltipConfig implements ConfigData {
 	@ConfigEntry.Gui.Tooltip boolean showMaxEnchantmentLevel = true;
+	@ConfigEntry.Gui.Tooltip boolean showBlastResistance = true;
 	@ConfigEntry.Gui.Tooltip boolean showCompostingChance = true;
 	@ConfigEntry.Gui.Tooltip boolean showBlockHardness = true;
 	@ConfigEntry.Gui.Tooltip boolean showLuminance = true;
