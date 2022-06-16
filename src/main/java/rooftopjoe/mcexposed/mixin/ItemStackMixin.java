@@ -28,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.effect.StatusEffectUtil;
@@ -59,9 +60,10 @@ public abstract class ItemStackMixin {
 	@Inject(at = @At("RETURN"), method = "Lnet/minecraft/item/ItemStack;getTooltip(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/client/item/TooltipContext;)Ljava/util/List;",
 	        locals = LocalCapture.CAPTURE_FAILSOFT)
 	private void onGetTooltip(@Nullable PlayerEntity player, TooltipContext context, CallbackInfoReturnable<List<Text>> ci, List<Text> list) {
-		final Item item = getItem();
-		int botLine = Math.max(1, list.size() - (context.isAdvanced() ? (((ItemStack)(Object)this).isDamaged() ? 1 : 0) + (((ItemStack)(Object)this).hasNbt() ? 1 : 0) + 1 : 0));
 		NumberFormat oneDecimal = DecimalFormat.getInstance();
+		final Item item = getItem();
+		int topLine = Math.min(1, list.size());
+		int botLine = Math.max(1, list.size() - (context.isAdvanced() ? (((ItemStack)(Object)this).isDamaged() ? 1 : 0) + (((ItemStack)(Object)this).hasNbt() ? 1 : 0) + 1 : 0));
 
 		if (player == null)
 			return;
@@ -69,6 +71,11 @@ public abstract class ItemStackMixin {
 		oneDecimal.setMinimumFractionDigits(0);
 		oneDecimal.setMaximumFractionDigits(1);
 		oneDecimal.setRoundingMode(RoundingMode.HALF_UP);
+
+		if (Main.configManager.isShowBlockHardness() && item instanceof BlockItem)
+			list.add(topLine, Text.translatable("tooltip.mcexposed.hardness")
+				.append(": " + oneDecimal.format(((BlockItem)item).getBlock().getHardness()))
+				.formatted(Formatting.GRAY));
 
 		if (Main.configManager.isShowMiningSpeed() && item instanceof ToolItem) {
 			float multiplier = ((ToolItem)item).getMaterial().getMiningSpeedMultiplier();

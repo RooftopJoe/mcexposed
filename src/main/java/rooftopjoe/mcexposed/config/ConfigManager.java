@@ -33,6 +33,7 @@ public class ConfigManager {
 	public boolean isShowStatusEffectAmplifier() { return config.hud.showStatusEffectAmplifier; }
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 
+	public boolean isShowBlockHardness() { return config.tooltip.showBlockHardness; }
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 	public boolean isShowMiningSpeed() { return config.tooltip.showMiningSpeed; }
 }

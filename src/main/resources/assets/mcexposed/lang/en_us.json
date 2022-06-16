@@ -8,10 +8,13 @@
 	"text.autoconfig.mcexposed.option.hud.showStatusEffectDuration.@Tooltip": "Show the duration on top of status effect icons.",
 
 	"text.autoconfig.mcexposed.category.tooltip": "Tooltips",
+	"text.autoconfig.mcexposed.option.tooltip.showBlockHardness": "Show block hardness",
+	"text.autoconfig.mcexposed.option.tooltip.showBlockHardness.@Tooltip": "Show the hardness of blocks, which affects mining speed.",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel": "Show maximum enchantment level",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel.@Tooltip": "Append the maximum to enchantment levels.",
 	"text.autoconfig.mcexposed.option.tooltip.showMiningSpeed": "Show mining speed",
 	"text.autoconfig.mcexposed.option.tooltip.showMiningSpeed.@Tooltip": "Show the mining speed of tools based on material, enchantments, status effects, and surroundings.",
 
+	"tooltip.mcexposed.hardness": "Hardness",
 	"tooltip.mcexposed.miningspeed": "Mining Speed"
 }
