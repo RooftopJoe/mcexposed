@@ -30,18 +30,21 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Formatting;
 
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvType;
 
+import rooftopjoe.mcexposed.Main;
+
+import java.util.stream.Stream;
 import java.util.Collection;
 
 import com.google.common.collect.Ordering;
-
-import rooftopjoe.mcexposed.Main;
 
 @Mixin(InGameHud.class)
 @Environment(EnvType.CLIENT)
@@ -49,6 +52,32 @@ public abstract class InGameHudMixin extends DrawableHelper {
 	@Shadow
 	@Final
 	private MinecraftClient client;
+
+	@Inject(at = @At("HEAD"), method = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V")
+	private void onRenderHotbarItem(int x, int y, float delta, PlayerEntity player, ItemStack stack, int seed, CallbackInfo callback) {
+		int count, width;
+		String countText;
+		float scaleFactor = 1;
+		MatrixStack matrices = new MatrixStack();
+
+		if (!Main.configManager.isShowItemCounts() || stack.isEmpty())
+			return;
+		
+		count = Stream.concat(player.getInventory().main.stream(), player.getInventory().offHand.stream()).filter(other -> other.isItemEqual(stack)).mapToInt(ItemStack::getCount).sum();
+
+		if (count == 1 || count == stack.getCount())
+			return;
+
+		countText = String.valueOf(count);
+		width = client.textRenderer.getWidth(countText);
+
+		if (width > 17)
+			scaleFactor = 17f / width;
+
+		matrices.translate(x, y, 158);
+		matrices.scale(scaleFactor, scaleFactor, 1);
+		client.textRenderer.drawWithShadow(matrices, countText, 0, 0, Formatting.WHITE.getColorValue());
+	}
 
 	@Inject(at = @At("TAIL"), method = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusEffectOverlay(Lnet/minecraft/client/util/math/MatrixStack;)V")
 	private void showStatusEffectInfo(MatrixStack matrices, CallbackInfo callback) {

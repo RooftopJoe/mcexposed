@@ -30,6 +30,7 @@ public class ConfigManager {
 		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 	}
 
+	public boolean isShowItemCounts() { return config.hud.showItemCounts; }
 	public boolean isShowStatusEffectAmplifier() { return config.hud.showStatusEffectAmplifier; }
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 

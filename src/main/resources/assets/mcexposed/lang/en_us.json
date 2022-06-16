@@ -2,6 +2,8 @@
 	"text.autoconfig.mcexposed.title": "MC Exposed Options",
 
 	"text.autoconfig.mcexposed.category.hud": "HUD",
+	"text.autoconfig.mcexposed.option.hud.showItemCounts": "Show item counts",
+	"text.autoconfig.mcexposed.option.hud.showItemCounts.@Tooltip": "Show the total number of items of a particular type available in the player's inventory on the hotbar.",
 	"text.autoconfig.mcexposed.option.hud.showStatusEffectAmplifier": "Show status effect amplifier",
 	"text.autoconfig.mcexposed.option.hud.showStatusEffectAmplifier.@Tooltip": "Show the amplifier on top of status effect icons.",
 	"text.autoconfig.mcexposed.option.hud.showStatusEffectDuration": "Show status effect duration",

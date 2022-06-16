@@ -25,6 +25,7 @@ More features are expected to come but here is a complete list of the ones imple
 
 ### HUD
 
+- Item counts
 - Status effect amplifier
 - Status effect duration
 

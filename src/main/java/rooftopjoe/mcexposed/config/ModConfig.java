@@ -36,6 +36,7 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
 
 @Config(name = "hud")
 class HudConfig implements ConfigData {
+	@ConfigEntry.Gui.Tooltip boolean showItemCounts = true;
 	@ConfigEntry.Gui.Tooltip boolean showStatusEffectAmplifier = true;
 	@ConfigEntry.Gui.Tooltip boolean showStatusEffectDuration = true;
 }
