@@ -19,6 +19,22 @@ and the [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-co
 
 For instructions on how to install any of these, follow the instructions provided by their respective vendors.
 
+## Features
+
+More features are expected to come but here is a complete list of the ones implemented so far.
+
+### HUD
+
+- Status effect amplifier
+- Status effect duration
+
+### Tooltips
+
+- Composting chance
+- Block hardness
+- Maximum enchantment level
+- Mining speed
+
 ## License
 
 *MC Exposed* is distributed under the terms of the GNU Lesser General Public License. See the `COPYING` and `COPYING.LESSER` files
