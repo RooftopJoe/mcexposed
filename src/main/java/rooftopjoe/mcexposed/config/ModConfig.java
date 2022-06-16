@@ -47,4 +47,5 @@ class TooltipConfig implements ConfigData {
 	@ConfigEntry.Gui.Tooltip boolean showBlockHardness = true;
 	@ConfigEntry.Gui.Tooltip boolean showMaxEnchantmentLevel = true;
 	@ConfigEntry.Gui.Tooltip boolean showMiningSpeed = true;
+	@ConfigEntry.Gui.Tooltip boolean showFoodStats = true;
 }

@@ -35,6 +35,7 @@ More features are expected to come but here is a complete list of the ones imple
 - Block hardness
 - Maximum enchantment level
 - Mining speed
+- Food statistics
 
 ## License
 

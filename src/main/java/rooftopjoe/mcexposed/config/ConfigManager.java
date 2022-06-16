@@ -38,4 +38,5 @@ public class ConfigManager {
 	public boolean isShowBlockHardness() { return config.tooltip.showBlockHardness; }
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 	public boolean isShowMiningSpeed() { return config.tooltip.showMiningSpeed; }
+	public boolean isShowFoodStats() { return config.tooltip.showFoodStats; }
 }

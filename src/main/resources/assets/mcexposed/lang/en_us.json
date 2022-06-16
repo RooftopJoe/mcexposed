@@ -18,8 +18,13 @@
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel.@Tooltip": "Append the maximum to enchantment levels.",
 	"text.autoconfig.mcexposed.option.tooltip.showMiningSpeed": "Show mining speed",
 	"text.autoconfig.mcexposed.option.tooltip.showMiningSpeed.@Tooltip": "Show the mining speed of tools based on material, enchantments, status effects, and surroundings.",
+	"text.autoconfig.mcexposed.option.tooltip.showFoodStats": "Show food statistics",
+	"text.autoconfig.mcexposed.option.tooltip.showFoodStats.@Tooltip": "Show the hunger and saturation values of food.",
 
 	"tooltip.mcexposed.compostingchance": "Composting Chance",
 	"tooltip.mcexposed.hardness": "Hardness",
-	"tooltip.mcexposed.miningspeed": "Mining Speed"
+	"tooltip.mcexposed.miningspeed": "Mining Speed",
+	"tooltip.mcexposed.foodstats": "When Consumed",
+	"tooltip.mcexposed.foodstats.hunger": "Hunger Points",
+	"tooltip.mcexposed.foodstats.saturation": "Saturation Points"
 }

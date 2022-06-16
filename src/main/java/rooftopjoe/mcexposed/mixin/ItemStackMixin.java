@@ -30,6 +30,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ToolItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
@@ -49,6 +50,7 @@ import java.util.List;
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 
 import rooftopjoe.mcexposed.Main;
 
@@ -73,18 +75,22 @@ public abstract class ItemStackMixin {
 		oneDecimal.setMaximumFractionDigits(1);
 		oneDecimal.setRoundingMode(RoundingMode.HALF_UP);
 
-		if (Main.configManager.isShowBlockHardness() && item instanceof BlockItem)
+		if (Main.configManager.isShowBlockHardness() && item instanceof BlockItem) {
 			list.add(topLine, Text.translatable("tooltip.mcexposed.hardness")
 				.append(": " + oneDecimal.format(((BlockItem)item).getBlock().getHardness()))
 				.formatted(Formatting.GRAY));
+			botLine++;
+		}
 
 		if (Main.configManager.isShowCompostingChance()) {
 			final float chance = ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item);
 			
-			if (chance > 0)
+			if (chance > 0) {
 				list.add(topLine, Text.translatable("tooltip.mcexposed.compostingchance")
 					.append(": " + oneDecimal.format(100 * chance) + "%")
 					.formatted(Formatting.GRAY));
+				botLine++;
+			}
 		}
 
 		if (Main.configManager.isShowMiningSpeed() && item instanceof ToolItem) {
@@ -104,9 +110,24 @@ public abstract class ItemStackMixin {
 			if (!player.isOnGround())
 				speed /= 5;
 
-			list.add(botLine++, Text.literal(" " + oneDecimal.format(speed) + "x ")
-			                        .append(Text.translatable("tooltip.mcexposed.miningspeed"))
-			                        .formatted(Formatting.DARK_GREEN));
+			list.add(botLine, Text.literal(" " + oneDecimal.format(speed) + "x ")
+			                      .append(Text.translatable("tooltip.mcexposed.miningspeed"))
+			                      .formatted(Formatting.DARK_GREEN));
+			botLine++;
+		}
+
+		if (Main.configManager.isShowFoodStats() && ((ItemStack)(Object)this).isFood()) {
+			final List<Text> lines = new ArrayList<>();
+			final FoodComponent component = item.getFoodComponent();
+			final int hunger = component.getHunger();
+			final float saturation = 2 * component.getSaturationModifier() * hunger;
+
+			lines.add(Text.literal(""));
+			lines.add(Text.translatable("tooltip.mcexposed.foodstats").append(":").formatted(Formatting.GRAY));
+			lines.add(Text.translatable("attribute.modifier.plus.0", hunger, Text.translatable("tooltip.mcexposed.foodstats.hunger")).formatted(Formatting.DARK_GREEN));
+			lines.add(Text.translatable("attribute.modifier.plus.0", oneDecimal.format(saturation), Text.translatable("tooltip.mcexposed.foodstats.saturation")).formatted(Formatting.DARK_GREEN));
+			list.addAll(botLine, lines);
+			botLine += 4;
 		}
 	}
 }
