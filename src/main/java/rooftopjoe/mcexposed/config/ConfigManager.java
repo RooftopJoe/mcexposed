@@ -37,6 +37,7 @@ public class ConfigManager {
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
 	public boolean isShowAxolotlVariant() { return config.tooltip.showAxolotlVariant; }
 	public boolean isShowBlastResistance() { return config.tooltip.showBlastResistance; }
+	public boolean isShowMusicDiscComparatorOutput() { return config.tooltip.showMusicDiscComparatorOutput; }
 	public boolean isShowCompostingChance() { return config.tooltip.showCompostingChance; }
 	public boolean isShowEnchantability() { return config.tooltip.showEnchantability; }
 	public boolean isShowBlockHardness() { return config.tooltip.showBlockHardness; }

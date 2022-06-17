@@ -46,6 +46,7 @@ class TooltipConfig implements ConfigData {
 	@ConfigEntry.Gui.Tooltip boolean showMaxEnchantmentLevel = true;
 	@ConfigEntry.Gui.Tooltip boolean showAxolotlVariant = true;
 	@ConfigEntry.Gui.Tooltip boolean showBlastResistance = true;
+	@ConfigEntry.Gui.Tooltip boolean showMusicDiscComparatorOutput = true;
 	@ConfigEntry.Gui.Tooltip boolean showCompostingChance = true;
 	@ConfigEntry.Gui.Tooltip boolean showEnchantability = true;
 	@ConfigEntry.Gui.Tooltip boolean showBlockHardness = true;

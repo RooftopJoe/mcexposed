@@ -29,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.FoodComponent;
@@ -118,6 +119,13 @@ public abstract class ItemStackMixin {
 				                      .formatted(Formatting.GRAY));
 				botLine++;
 			}
+		}
+
+		if (Main.configManager.isShowMusicDiscComparatorOutput() && item instanceof MusicDiscItem) {
+			list.add(botLine, Text.translatable("tooltip.mcexposed.comparatoroutput")
+			                      .append(": " + String.valueOf(((MusicDiscItem)item).getComparatorOutput()))
+			                      .formatted(Formatting.GRAY));
+			botLine++;
 		}
 
 		if (Main.configManager.isShowBlastResistance() && item instanceof BlockItem) {

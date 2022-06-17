@@ -34,6 +34,7 @@ More features are expected to come but here is a complete list of the ones imple
 - Maximum enchantment level
 - Axolotl variant
 - Blast resistance
+- Music disc comparator output
 - Composting chance
 - Enchantability
 - Block hardness
