@@ -16,6 +16,8 @@
 	"text.autoconfig.mcexposed.option.tooltip.showBlastResistance.@Tooltip": "Show the blast resistence of blocks, meaning how well they survive explosions.",
 	"text.autoconfig.mcexposed.option.tooltip.showCompostingChance": "Show composting chance",
 	"text.autoconfig.mcexposed.option.tooltip.showCompostingChance.@Tooltip": "Show the composting chance of items, which determines the likelihood that they will increase the composter's fill level.",
+	"text.autoconfig.mcexposed.option.tooltip.showEnchantability": "Show enchantability",
+	"text.autoconfig.mcexposed.option.tooltip.showEnchantability.@Tooltip": "Show enchantability, which affects the enchantments and levels attainable from enchanting tables.",
 	"text.autoconfig.mcexposed.option.tooltip.showBlockHardness": "Show block hardness",
 	"text.autoconfig.mcexposed.option.tooltip.showBlockHardness.@Tooltip": "Show the hardness of blocks, which affects mining speed.",
 	"text.autoconfig.mcexposed.option.tooltip.showLuminance": "Show luminance",
@@ -27,6 +29,7 @@
 
 	"tooltip.mcexposed.blastresistance": "Blast Resistance",
 	"tooltip.mcexposed.compostingchance": "Composting Chance",
+	"tooltip.mcexposed.enchantability": "Enchantability",
 	"tooltip.mcexposed.hardness": "Hardness",
 	"tooltip.mcexposed.luminance": "Luminance",
 	"tooltip.mcexposed.miningspeed": "Mining Speed",

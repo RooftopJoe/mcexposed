@@ -34,6 +34,7 @@ More features are expected to come but here is a complete list of the ones imple
 - Maximum enchantment level
 - Blast resistance
 - Composting chance
+- Enchantability
 - Block hardness
 - Luminance
 - Mining speed

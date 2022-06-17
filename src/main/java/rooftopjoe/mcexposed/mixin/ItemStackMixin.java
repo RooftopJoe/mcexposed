@@ -94,6 +94,13 @@ public abstract class ItemStackMixin {
 			botLine++;
 		}
 
+		if (Main.configManager.isShowEnchantability() && ((ItemStack)(Object)this).isEnchantable()) {
+			list.add(topLine, Text.translatable("tooltip.mcexposed.enchantability")
+			                      .append(": " + String.valueOf(item.getEnchantability()))
+			                      .formatted(Formatting.GRAY));
+			botLine++;
+		}
+
 		if (Main.configManager.isShowCompostingChance()) {
 			final float chance = ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.getFloat(item);
 			
