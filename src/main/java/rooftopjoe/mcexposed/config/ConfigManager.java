@@ -35,6 +35,7 @@ public class ConfigManager {
 	public boolean isShowStatusEffectDuration() { return config.hud.showStatusEffectDuration; }
 
 	public boolean isShowMaxEnchantmentLevel() { return config.tooltip.showMaxEnchantmentLevel; }
+	public boolean isShowAxolotlVariant() { return config.tooltip.showAxolotlVariant; }
 	public boolean isShowBlastResistance() { return config.tooltip.showBlastResistance; }
 	public boolean isShowCompostingChance() { return config.tooltip.showCompostingChance; }
 	public boolean isShowEnchantability() { return config.tooltip.showEnchantability; }

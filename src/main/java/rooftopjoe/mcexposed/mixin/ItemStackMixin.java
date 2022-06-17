@@ -29,13 +29,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.text.Text;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.Formatting;
 import net.minecraft.block.ComposterBlock;
@@ -60,6 +64,10 @@ import rooftopjoe.mcexposed.Main;
 public abstract class ItemStackMixin {
 	@Shadow
 	public abstract Item getItem();
+
+	@Shadow
+	@Nullable
+	public abstract NbtCompound getNbt();
 
 	@Inject(at = @At("RETURN"), method = "Lnet/minecraft/item/ItemStack;getTooltip(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/client/item/TooltipContext;)Ljava/util/List;",
 	        locals = LocalCapture.CAPTURE_FAILSOFT)
@@ -117,6 +125,15 @@ public abstract class ItemStackMixin {
 			                      .append(": " + oneDecimal.format(((BlockItem)item).getBlock().getBlastResistance()))
 			                      .formatted(Formatting.GRAY));
 			botLine++;
+		}
+
+		if (Main.configManager.isShowAxolotlVariant() && item == Items.AXOLOTL_BUCKET) {
+			NbtCompound tag = this.getNbt();
+
+			if (tag != null && tag.contains(AxolotlEntity.VARIANT_KEY, NbtElement.INT_TYPE)) {
+				list.add(topLine, Text.literal(AxolotlEntity.Variant.VARIANTS[tag.getInt(AxolotlEntity.VARIANT_KEY)].getName()).formatted(Formatting.ITALIC, Formatting.GRAY));
+				botLine++;
+			}
 		}
 
 		if (Main.configManager.isShowMiningSpeed() && item instanceof ToolItem) {

@@ -12,6 +12,8 @@
 	"text.autoconfig.mcexposed.category.tooltip": "Tooltips",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel": "Show maximum enchantment level",
 	"text.autoconfig.mcexposed.option.tooltip.showMaxEnchantmentLevel.@Tooltip": "Append the maximum to enchantment levels.",
+	"text.autoconfig.mcexposed.option.tooltip.showAxolotlVariant": "Show axolotl variant",
+	"text.autoconfig.mcexposed.option.tooltip.showAxolotlVariant.@Tooltip": "Show the axolotl variant for buckets of axolotl.",
 	"text.autoconfig.mcexposed.option.tooltip.showBlastResistance": "Show blast resistance",
 	"text.autoconfig.mcexposed.option.tooltip.showBlastResistance.@Tooltip": "Show the blast resistence of blocks, meaning how well they survive explosions.",
 	"text.autoconfig.mcexposed.option.tooltip.showCompostingChance": "Show composting chance",
