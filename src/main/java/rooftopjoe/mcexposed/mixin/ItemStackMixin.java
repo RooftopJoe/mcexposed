@@ -37,7 +37,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.passive.AxolotlEntity;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.text.Text;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -53,12 +55,14 @@ import net.fabricmc.api.EnvType;
 import javax.annotation.Nullable;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 
 import rooftopjoe.mcexposed.Main;
+
+import com.mojang.datafixers.util.Pair;
 
 @Mixin(ItemStack.class)
 @Environment(EnvType.CLIENT)
@@ -168,15 +172,35 @@ public abstract class ItemStackMixin {
 		}
 
 		if (Main.configManager.isShowFoodStats() && ((ItemStack)(Object)this).isFood()) {
-			final List<Text> lines = new ArrayList<>();
 			final FoodComponent component = item.getFoodComponent();
+			final List<Pair<StatusEffectInstance, Float>> effects = component.getStatusEffects();
+			final List<Text> lines = new ArrayList<>();
 			final int hunger = component.getHunger();
 			final float saturation = 2 * component.getSaturationModifier() * hunger;
+
+			for (Pair<StatusEffectInstance, Float> instance : effects) {				
+				StatusEffectInstance key = instance.getFirst();
+				float value = instance.getSecond();
+				String amplifiedEffect = Text.translatable("potion.withAmplifier", key.getEffectType().getName(), Text.translatable("potion.potency." + key.getAmplifier())).getString().trim();
+
+				if (value == 1)
+					lines.add(Text.translatable("potion.withDuration", amplifiedEffect, StatusEffectUtil.durationToString(key, 1))
+					              .formatted(key.getEffectType().isBeneficial() ? Formatting.BLUE : Formatting.RED));
+				else
+					lines.add(Text.translatable("attribute.modifier.equals.1",
+					                            oneDecimal.format(100 * instance.getSecond()),
+					                            Text.translatable("potion.withDuration", amplifiedEffect, StatusEffectUtil.durationToString(key, 1)))
+					              .formatted(key.getEffectType().isBeneficial() ? Formatting.BLUE : Formatting.RED));				
+				botLine++;
+			}
+			list.addAll(topLine, lines);
+			lines.clear();
 
 			lines.add(Text.literal(""));
 			lines.add(Text.translatable("tooltip.mcexposed.foodstats").append(":").formatted(Formatting.GRAY));
 			lines.add(Text.translatable("attribute.modifier.plus.0", hunger, Text.translatable("tooltip.mcexposed.foodstats.hunger")).formatted(Formatting.DARK_GREEN));
 			lines.add(Text.translatable("attribute.modifier.plus.0", oneDecimal.format(saturation), Text.translatable("tooltip.mcexposed.foodstats.saturation")).formatted(Formatting.DARK_GREEN));
+
 			list.addAll(botLine, lines);
 			botLine += 4;
 		}
